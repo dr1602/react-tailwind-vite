@@ -1,6 +1,7 @@
-import { useContext } from "react"
-import { NavLink, useActionData } from "react-router-dom"
-import { ShoppingCartContext } from "../../Context"
+import { useContext } from 'react'
+import { NavLink, useActionData } from 'react-router-dom'
+import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { ShoppingCartContext } from '../../Context'
 
 const Navbar = () => {
 
@@ -8,9 +9,9 @@ const Navbar = () => {
     const activeStyle = 'underline underline-offset-[0.9vh]'
 
     return (
-        <nav className='flex justify-between bg-teal items-center fixed z-10 top-0 w-full py-[1.5vh] px-[6vh] text-sm font-light'>
+        <nav className='flex justify-between bg-teal items-center fixed z-10 top-0 w-full h-[9vh] px-[6vh] text-sm font-light'>
             <ul className='flex items-center gap-[3vh] text-white'>
-                <li className="font-semibold text-lg">
+                <li className='font-semibold text-lg'>
                     <NavLink to='/'
                     >
                             Shopi
@@ -79,7 +80,7 @@ const Navbar = () => {
             </ul>
 
             <ul className='flex items-center gap-[3vh] text-white'>
-                <li className="text-white/60">
+                <li className='text-white/60'>
                     dev@adabyron.tech
                 </li>
                 <li>
@@ -112,8 +113,8 @@ const Navbar = () => {
                             Sign In
                     </NavLink>
                 </li>
-                <li>
-                    🛒 {context.count}
+                <li className='flex'>
+                    <ShoppingCartIcon className='pr-[0.9vh] h-[3vh]'/> {context.count}
                 </li>
             </ul>
         </nav>

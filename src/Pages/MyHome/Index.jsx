@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card from '../../Components/Card/index.jsx';
+import ProductDetail from '../../Components/ProductDetail/index.jsx';
 
 function Home() {
 
@@ -13,7 +14,8 @@ function Home() {
 
   return (
     <div className='mt-[9vh] md:mt-[6vh]'>
-      <h1 className='text-center mb-[3vh]'>
+
+      <h1 className='font-medium text-xl text-center my-[3vh]'>
         Home
       </h1>
       
@@ -26,6 +28,8 @@ function Home() {
         }
 
       </div>
+
+      <ProductDetail/>
 
     </div>
   )
