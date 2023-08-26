@@ -7,7 +7,7 @@ function Home() {
   const [items, setItems] = useState(null); 
 
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products') // vienen en forma de promesa, por eso necesitamos then para resolver la promesa.
+    fetch('https://pokeapi.co/api/v2/') // vienen en forma de promesa, por eso necesitamos then para resolver la promesa.
       .then (response => response.json()) // ahora esta en json, despues se transforma la info para que funcione de la manera que necesitamos.
       .then(data => setItems(data)) // le mandamos la 'data' a setItems
   }, []) /* valor por defecto */
