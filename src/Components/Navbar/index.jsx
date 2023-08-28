@@ -14,7 +14,7 @@ const Navbar = () => {
                 <li className='font-semibold text-lg'>
                     <NavLink to='/'
                     >
-                            Shopi
+                        PokeStore
                     </NavLink>
                 </li>
                 <li>

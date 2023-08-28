@@ -10,7 +10,7 @@ const Card = (data) => {
         <div className='bg-fuchsia-400 cursor-pointer w-[30vh] h-[36vh] mb-[3vh]'>
             <figure className='relative w-full h-4/5'>
                 <span className='absolute bottom-0 left-0 px-[0.9vh] m-[1.2vh] bg-[#ffff]/80 rounded-lg text-black text-xs font-light'> {data.data.category.name} </span>
-                <img className='w-full h-full object-cover rounded-t-lg' src={data.data.images} alt='{data.data.title}' />
+                <img className='w-full h-full object-cover rounded-t-lg' src={data.data.pokemon} alt='{data.data.title}' />
                 <div 
                     className='absolute top-0 right-0 flex justify-center items-center bg-white/80 w-[3vh] h-[3vh] rounded-full m-[1.8vh] pb-[0.6vh] hover:bg-teal'
                     onClick={() => context.setCount(context.count + 1)}

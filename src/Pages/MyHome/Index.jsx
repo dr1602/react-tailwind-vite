@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react';
 import Card from '../../Components/Card/index.jsx';
 import ProductDetail from '../../Components/ProductDetail/index.jsx';
+import axios from 'axios';
 
 function Home() {
 
   const [items, setItems] = useState(null); 
+  const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/') // vienen en forma de promesa, por eso necesitamos then para resolver la promesa.
-      .then (response => response.json()) // ahora esta en json, despues se transforma la info para que funcione de la manera que necesitamos.
-      .then(data => setItems(data)) // le mandamos la 'data' a setItems
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=12') // vienen en forma de promesa, por eso necesitamos then para resolver la promesa.
+      .then(response => response.json())
+      .then (resp => {
+        for (let i = 0; i < resp.data.results.length; i++) {
+          fetch(resp.data.results[i].url)
+          .then(result=>{
+            setItems(prevArray=>[...prevArray, result.data])
+          })
+        }
+      }) // ahora esta en json, despues se transforma la info para que funcione de la manera que necesitamos.
   }, []) /* valor por defecto */
 
   return (
