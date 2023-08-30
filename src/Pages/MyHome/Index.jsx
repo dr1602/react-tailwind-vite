@@ -1,25 +1,41 @@
 import { useState, useEffect } from 'react';
 import Card from '../../Components/Card/index.jsx';
 import ProductDetail from '../../Components/ProductDetail/index.jsx';
-import axios from 'axios';
+import { apiUrl } from '../../Api'
+// import axios from 'axios';
 
 function Home() {
 
   const [items, setItems] = useState(null); 
-  const [pokemon, setPokemon] = useState([]);
+  // const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=12') // vienen en forma de promesa, por eso necesitamos then para resolver la promesa.
-      .then(response => response.json())
-      .then (resp => {
-        for (let i = 0; i < resp.data.results.length; i++) {
-          fetch(resp.data.results[i].url)
-          .then(result=>{
-            setItems(prevArray=>[...prevArray, result.data])
-          })
-        }
-      }) // ahora esta en json, despues se transforma la info para que funcione de la manera que necesitamos.
-  }, []) /* valor por defecto */
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/products`)
+        const data = await response.json()
+        setItems(data)
+      } catch (error) {
+        console.log('Oh no, ocurrió un error:');
+      }
+    }
+    fetchData()
+  }, [])
+
+  // const loadData = () => {
+  //   fetch ('https://pokeapi.co/api/v2/pokemon?limit=12') // vienen en forma de promesa, por eso necesitamos then para resolver la promesa.
+  //     .then(response => response.json())
+  //     .then (response => {
+  //       setPokemon(response.results);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching data: ', error);
+  //     })
+  // }
+
+
+  
+  // useEffect (loadData, []) /* valor por defecto */
 
   return (
     <div className='mt-[9vh] md:mt-[6vh]'>
@@ -31,9 +47,16 @@ function Home() {
       <div className='grid grid-cols-3 md:grid-cols-6 gap-[3vh] w-full max-w-screen-xl'>
 
         {
-          items?.map((item) => (
-            <Card key={item.id} data={item} />
-            ))
+          // pokemon?.map((poke, index) => (
+            items?.map(item => {
+              <Card key={item.id} data={item}/>
+            })
+            // <Card key={index} data={poke.name} />
+            // <div key={index}>
+            //   <p>{poke.name}</p>
+            //   <img src={poke.sprites.front_default} alt='' />
+            // </div>
+            // ))
         }
 
       </div>

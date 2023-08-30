@@ -4,3 +4,4 @@
 24/08/2023: heroicons & Product detail
 25/08/2023: Cambio de API
 27/08/2023: Poke API siendo actualizada
+29/08/2023: Volvi a la api anterior
